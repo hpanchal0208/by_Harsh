@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ms. Pratibha's Sweet Surprise</title>
+  <style>
+    body {
+      background-color: #f8f0f5;
+      color: #333;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 20px;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .header {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #ff66b2;
+      animation: fadeInHeader 3s ease-out;
+    }
+
+    @keyframes fadeInHeader {
+      0% { opacity: 0; transform: translateY(-50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .button-container {
+      margin-top: 30px;
+    }
+
+    .inbox {
+      background-color: #ff66b2;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.3em;
+      width: 300px;
+      margin: 0 auto;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      animation: pulseButton 1.5s infinite alternate;
+    }
+
+    @keyframes pulseButton {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+
+    /* Flower styles for enhanced shower */
+    .flowers {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .flower {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-image: url('https://www.example.com/rose.png'); /* Replace with your flower image */
+      background-size: cover;
+      animation: flowerFloat 4s ease-in-out infinite, bounce 2s infinite ease-in-out;
+      opacity: 0;
+      z-index: 1;
+    }
+
+    @keyframes flowerFloat {
+      0% { transform: translateY(100vh) scale(0.8); opacity: 1; }
+      100% { transform: translateY(-100px) scale(1.2); opacity: 1; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Style for the message */
+    .message {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #ff66b2;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 15px;
+      margin-top: 30px;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      display: none;
+      animation: slideBounceIn 1s ease forwards;
+    }
+
+    @keyframes slideBounceIn {
+      0% {
+        transform: translateY(50px) scale(0.8);
+        opacity: 0;
+      }
+      60% {
+        transform: translateY(-10px) scale(1.05);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(0) scale(1);
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="header">Hello, Ms. Pratibha 🌸</h1>
+
+    <div class="button-container">
+      <div class="inbox" onclick="openInbox()">Tap here 💌</div>
+    </div>
+
+    <div id="flowers" class="flowers"></div>
+
+    <div id="message" class="message">
+     Complete your tasks Nicely also remove some tasks from your to-do list!! And don't forget to eat your food on time! Take Care 🌼🌷
+    </div>
+  </div>
+
+  <script>
+    function openInbox() {
+      const flowersContainer = document.getElementById('flowers');
+      const messageContainer = document.getElementById('message');
+
+      // Clear any existing flowers
+      flowersContainer.innerHTML = '';
+
+      // Generate flower shower (increase the number of flowers for more magic!)
+      for (let i = 0; i < 50; i++) {
+        const flower = document.createElement('div');
+        flower.classList.add('flower');
+        flower.style.left = `${Math.random() * 100}vw`; // Random position horizontally
+        flower.style.animationDelay = `${Math.random()}s`; // Randomize delay for each flower
+        flowersContainer.appendChild(flower);
+      }
+
+      // Show message with smooth transition
+      messageContainer.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
